@@ -25,7 +25,7 @@ class ContinuousVariable(Variable):
         plt.hist(self.values.dropna(), bins=50)
         plt.yticks(fontsize=15)
         plt.xticks(fontsize=15)
-        hist_file_path = paths.GRAPH_DIR + r"\hist_{}.png".format(self.index)
+        hist_file_path = paths.GRAPH_DIR + r"/hist_{}.png".format(self.index)
         plt.savefig(hist_file_path)
         plt.close()
         return hist_file_path

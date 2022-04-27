@@ -121,10 +121,11 @@ class SeenopsisData(object):
             html_file.close()
     
         if self.export_to_pdf:
-            os.chdir(CHROME_DIR)
+            # os.chdir(CHROME_DIR)
             pdf_file_path, html_extention = os.path.splitext(self.output_file_path)
             pdf_file_path += ".pdf"
-            subprocess.call('chrome --headless --print-to-pdf="{pdf_file_path}" "{html_file_path}"'.format(pdf_file_path=pdf_file_path, html_file_path=self.output_file_path), shell=True, creationflags=0x08000000)
+            subprocess.call(["pandoc", self.output_file_path, "-o", pdf_file_path])
+            # subprocess.call('chrome --headless --print-to-pdf="{pdf_file_path}" "{html_file_path}"'.format(pdf_file_path=pdf_file_path, html_file_path=self.output_file_path), shell=True, creationflags=0x08000000)
             os.chdir(paths.SCRIPT_DIR)
 
     def get_columns(self, filter_by_var_type=None):

@@ -38,7 +38,7 @@ class Variable(object):
         self.values.value_counts().nlargest(10).plot(kind='barh')
         plt.yticks(fontsize=15)
         plt.xticks(fontsize=14)
-        bars_file_path = paths.GRAPH_DIR + r"\bars_{}.png".format(self.index)
+        bars_file_path = paths.GRAPH_DIR + r"/bars_{}.png".format(self.index)
         plt.savefig(bars_file_path)
         plt.close()
         return bars_file_path

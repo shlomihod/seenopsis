@@ -13,7 +13,7 @@ class Seenopsis(object):
         self.output_dir_path.set(paths.SCRIPT_DIR)
         self.output_file_name = tk.StringVar()
         self.output_file_name.set("seenopsis_output.html")
-        self.output_file_path = self.output_dir_path.get() + "\\" + self.output_file_name.get()
+        self.output_file_path = self.output_dir_path.get() + "/" + self.output_file_name.get()
         self.split_binary = ["split_binary"]
         self.split_binary[0] = tk.BooleanVar() # that is a list because of a bug in tkinter.
         self.split_by_column = tk.StringVar()
@@ -39,7 +39,7 @@ class Seenopsis(object):
         elif os.path.splitext(self.output_file_name.get())[1] != ".html":
             tk.messagebox.showwarning("Warning", "The output file name has to end with .html.")
         else:
-            self.output_file_path = self.output_dir_path.get() + "\\" + self.output_file_name.get()
+            self.output_file_path = self.output_dir_path.get() + "/" + self.output_file_name.get()
             self.sd = seenopsis_data.SeenopsisData(self.input_file_path.get(), self.output_file_path, export_to_pdf=self.export_to_pdf.get())
             self.build_options_gui()
     
@@ -49,11 +49,11 @@ class Seenopsis(object):
         
     def ask_output_dir(self):
         input_val = filedialog.askdirectory()
-        self.output_dir_path.set(input_val.replace("/", "\\"))
+        self.output_dir_path.set(input_val)
         
     def ask_input_file(self):
         input_val = filedialog.askopenfilename()
-        self.input_file_path.set(input_val.replace("/", "\\"))
+        self.input_file_path.set(input_val)
         
     def end(self):
         tk.messagebox.showinfo("Success!", "Your output files are at: {}".format(self.output_dir_path.get()))
